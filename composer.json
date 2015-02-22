@@ -1,0 +1,21 @@
+{
+    "name": "mcprohosting/ccbill",
+    "description": "Gateway for CCBill payment processing",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Connor Peet",
+            "email": "connor@connorpeet.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mcprohosting\\": "src/Mcprohosting"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "~4.5",
+        "mockery/mockery": "0.9.*"
+    }
+}
