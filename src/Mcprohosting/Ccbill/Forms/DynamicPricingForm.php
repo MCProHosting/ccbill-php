@@ -16,7 +16,7 @@ class DynamicPricingForm extends AbstractForm implements Form
      */
     public function isRecurring()
     {
-        return $this->data['formRebills'] && $this->data['formRebills'] !== 0;
+        return array_key_exists('formRebills', $this->data) && $this->data['formRebills'] !== 0;
     }
 
     public function serialize()
