@@ -14,12 +14,12 @@ if (!$gateway['type']) {
 
 // Extract and verify the invoice ID
 $invoice = array_key_exists('invoiceId', $_POST) ? $_POST['invoiceId'] : '';
-checkCbInvoiceID($invoiceid,$gateway["name"]);
+checkCbInvoiceID($invoiceid, $gateway['name']);
 
-$digest = md5($_POST['subscription_id'] . '1' . $gateway['salt']);
+$digest = md5($_POST['subscriptionId'] . '1' . $gateway['salt']);
 
 // If the hash verifies as successful, add the payment
-if ($digest === $_POST['formDigest']) {
+if ($digest === $_POST['responseDigest']) {
     addInvoicePayment(
         // Invoice ID
         $invoice,

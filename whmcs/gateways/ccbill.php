@@ -1,13 +1,6 @@
 <?php
 
-$ccbillCurrencyMapping = [
-    'AUD' => '036',
-    'CAD' => '124',
-    'JPY' => '392',
-    'GBP' => '826',
-    'USD' => '840',
-    'EUR' => '978'
-];
+
 
 function ccbill_config() {
     return [
@@ -35,14 +28,24 @@ function ccbill_config() {
 }
 
 function ccbill_link($params) {
+
+    $currencyMapping = [
+        'AUD' => '036',
+        'CAD' => '124',
+        'JPY' => '392',
+        'GBP' => '826',
+        'USD' => '840',
+        'EUR' => '978'
+    ];
+
     // Make sure the currency is supported by ccbill.
-    if (!array_key_exists($params['currency'], $ccbillCurrencyMapping)) {
-        return '<p>Currency not supported.</p>';
+    if (!array_key_exists($params['currency'], $currencyMapping)) {
+        return '<p>Currency ' . $params['currency'] . ' not supported.</p>';
     }
 
     // WHMCS doesn't provide the period. Just default to 30 days :(
     $period = 30;
-    $currencyCode = $ccbillCurrencyMapping[$params['currency']];
+    $currencyCode = $currencyMapping[$params['currency']];
 
     // Create the list of form values to encode
     $encode = [
